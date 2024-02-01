@@ -1,0 +1,4 @@
+com/appleyk/creator/controller/LicenseCreatorController.class
+com/appleyk/creator/service/LicenseCreatorService.class
+com/appleyk/creator/config/LicenseCreatorProperties.class
+com/appleyk/creator/config/LicenseCreatorAutoConfigure.class

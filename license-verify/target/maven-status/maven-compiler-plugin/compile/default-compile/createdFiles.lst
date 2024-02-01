@@ -1,0 +1,6 @@
+com/appleyk/verify/config/LicenseVerifyProperties.class
+com/appleyk/verify/config/LicenseInterceptorConfig.class
+com/appleyk/verify/annotion/VLicense.class
+com/appleyk/verify/listener/LicenseVerifyInstallListener.class
+com/appleyk/verify/interceptor/LicenseVerifyInterceptor.class
+com/appleyk/verify/config/LicenseVerifyAutoConfigure.class
