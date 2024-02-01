@@ -1,11 +1,7 @@
 # license
 软件许可证书生成+验证
 
-作者：appleyk
-
-博客地址：https://blog.csdn.net/appleyk
-
-本篇博客地址：https://blog.csdn.net/Appleyk/article/details/101530203
+作者：zhaosh
 
 ## license.app
 
@@ -26,7 +22,7 @@ application.properties文件中添加如下配置：
 
 ##License相关配置
  证书名称
-- > springboot.license.verify.subject=landi
+- > springboot.license.verify.subject=fanty
 
 公钥别名
 - > springboot.license.verify.publicAlias=publiccert
@@ -50,7 +46,7 @@ application.properties文件中添加如下配置：
 
 ```json
 {
-    "subject": "landi",
+    "subject": "fanty",
     "privateAlias": "privateKeys",
     "keyPass": "123456a",
     "storePass": "123456a",
@@ -60,19 +56,15 @@ application.properties文件中添加如下配置：
     "description": "系统软件许可证书",
     "licenseCheck": {
         "ipAddress": [
-            "192.168.1.2",
-            "2408:8221:1d:bbd0:ad77:446e:4904:a776",
-            "2408:8221:1d:bbd0:71b6:d1b0:39c6:3c4e",
-            "192.168.145.1",
-            "192.168.239.1"
+            "192.168.1.1",
+            "192.168.1.2"
         ],
         "macAddress": [
             "64-FB-81-6F-0E-C2",
-            "00-50-56-C0-00-08",
             "00-50-56-C0-00-01"
         ],
-        "cpuSerial": "BFEBFBFF000206D7",
-        "mainBoardSerial": "MB-201706282017",
+        "cpuSerial": "***",
+        "mainBoardSerial": "***",
         "registerAmount": 1000,
         "macCheck": false,
         "boardCheck": false,
