@@ -1,6 +1,6 @@
-/Volumes/data480/github/fanty/license/license-app/license-verify-app-test/src/main/java/com/appleyk/verify/listener/CustomVerifyListenerB.java
-/Volumes/data480/github/fanty/license/license-app/license-verify-app-test/src/main/java/com/appleyk/verify/controller/LoginTestController.java
-/Volumes/data480/github/fanty/license/license-app/license-verify-app-test/src/main/java/com/appleyk/verify/LicenseVerifyApp.java
-/Volumes/data480/github/fanty/license/license-app/license-verify-app-test/src/main/java/com/appleyk/verify/controller/VerifyTestController.java
-/Volumes/data480/github/fanty/license/license-app/license-verify-app-test/src/main/java/com/appleyk/verify/listener/CustomVerifyListenerA.java
-/Volumes/data480/github/fanty/license/license-app/license-verify-app-test/src/main/java/com/appleyk/verify/controller/PageController.java
+/Volumes/data480/github/fanty/license/license-app/license-verify-app-test/src/main/java/com/fanty/verify/controller/LoginTestController.java
+/Volumes/data480/github/fanty/license/license-app/license-verify-app-test/src/main/java/com/fanty/verify/listener/CustomVerifyListenerA.java
+/Volumes/data480/github/fanty/license/license-app/license-verify-app-test/src/main/java/com/fanty/verify/listener/CustomVerifyListenerB.java
+/Volumes/data480/github/fanty/license/license-app/license-verify-app-test/src/main/java/com/fanty/verify/LicenseVerifyApp.java
+/Volumes/data480/github/fanty/license/license-app/license-verify-app-test/src/main/java/com/fanty/verify/controller/VerifyTestController.java
+/Volumes/data480/github/fanty/license/license-app/license-verify-app-test/src/main/java/com/fanty/verify/controller/PageController.java

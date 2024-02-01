@@ -1,4 +1,4 @@
-/Volumes/data480/github/fanty/license/license-creator/src/main/java/com/appleyk/creator/controller/LicenseCreatorController.java
-/Volumes/data480/github/fanty/license/license-creator/src/main/java/com/appleyk/creator/service/LicenseCreatorService.java
-/Volumes/data480/github/fanty/license/license-creator/src/main/java/com/appleyk/creator/config/LicenseCreatorAutoConfigure.java
-/Volumes/data480/github/fanty/license/license-creator/src/main/java/com/appleyk/creator/config/LicenseCreatorProperties.java
+/Volumes/data480/github/fanty/license/license-creator/src/main/java/com/fanty/creator/service/LicenseCreatorService.java
+/Volumes/data480/github/fanty/license/license-creator/src/main/java/com/fanty/creator/controller/LicenseCreatorController.java
+/Volumes/data480/github/fanty/license/license-creator/src/main/java/com/fanty/creator/config/LicenseCreatorProperties.java
+/Volumes/data480/github/fanty/license/license-creator/src/main/java/com/fanty/creator/config/LicenseCreatorAutoConfigure.java

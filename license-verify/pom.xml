@@ -3,8 +3,8 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>license-springboot</artifactId>
-        <groupId>com.appleyk</groupId>
+        <groupId>com.fanty</groupId>
+        <artifactId>fanty-license</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
@@ -19,7 +19,7 @@
 
         <!--引入Lic核心模块-->
         <dependency>
-            <groupId>com.appleyk</groupId>
+            <groupId>com.fanty</groupId>
             <artifactId>license-core-spring-boot-starter</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
@@ -45,5 +45,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

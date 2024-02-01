@@ -2,8 +2,8 @@
   "groups": [
     {
       "name": "springboot.license",
-      "sourceType": "com.appleyk.verify.config.LicenseVerifyProperties",
-      "type": "com.appleyk.verify.config.LicenseVerifyProperties"
+      "sourceType": "com.fanty.verify.config.LicenseVerifyProperties",
+      "type": "com.fanty.verify.config.LicenseVerifyProperties"
     }
   ],
   "properties": [

@@ -1,1 +1,1 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.appleyk.core.config.LicenseCoreAutoConfigure
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.fanty.core.config.LicenseCoreAutoConfigure

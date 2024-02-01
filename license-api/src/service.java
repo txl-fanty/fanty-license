@@ -22,7 +22,7 @@
 spring.profiles.active = creator
 
 <dependency>
-    <groupId>com.appleyk</groupId>
+    <groupId>com.fanty</groupId>
     <artifactId>license-creator-spring-boot-starter</artifactId>
     <version>1.0-SNAPSHOT</version>
 </dependency>
@@ -37,7 +37,7 @@ spring.profiles.active = creator
 spring.profiles.active = verify
 
 <dependency>
-    <groupId>com.appleyk</groupId>
+    <groupId>com.fanty</groupId>
     <artifactId>license-verify-spring-boot-starter</artifactId>
     <version>1.0-SNAPSHOT</version>
 </dependency>

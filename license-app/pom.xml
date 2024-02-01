@@ -2,19 +2,22 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <parent>
-        <artifactId>license-springboot</artifactId>
-        <groupId>com.appleyk</groupId>
+        <groupId>com.fanty</groupId>
+        <artifactId>fanty-license</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <modules>
-        <module>license-creator-app-test</module>
-        <module>license-verify-app-test</module>
-    </modules>
+
     <modelVersion>4.0.0</modelVersion>
     <artifactId>license-app-spring-boot-starter</artifactId>
     <name>license-app</name>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <description>系统软件证书使用测试模块</description>
+
+    <modules>
+        <module>license-creator-app-test</module>
+        <module>license-verify-app-test</module>
+    </modules>
 </project>
