@@ -48,3 +48,6 @@ nbdist/
 !*/build/*.java
 !*/build/*.html
 !*/build/*.xml
+/fanty-license/
+*/target/
+*/*/target/
