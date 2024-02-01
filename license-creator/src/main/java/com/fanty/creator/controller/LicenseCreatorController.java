@@ -21,60 +21,71 @@ import java.text.SimpleDateFormat;
 /**
  * <p>用于生成证书文件 == !!!不能放在给客户部署的服务器上，以免客户自己调用生成lic</p>
  *
- * @author fanty
- * @version v1.0.0
- * @blob https://blog.csdn.net/fanty
- * @date created on 11:36 下午 2020/8/21
+ * @author zhaosh
+ * @date 2024/02/01
  */
 @CrossOrigin
 @RestController
 @RequestMapping("/license")
 public class LicenseCreatorController {
 
+    /** LIC 前缀 URL */
     @Value("${springboot.license.server.prefix:http://localhost:8080/license/}")
-    private String licPrefixUrl ;
+    private String licPrefixUrl;
 
+    /** 创作者服务 */
     @Autowired
-    private LicenseCreatorService creatorService ;
+    private LicenseCreatorService creatorService;
 
+    /** 性能 */
     @Autowired
     private LicenseCreatorProperties properties;
 
     /**
      * <p>生成证书</p>
-     * @param param 生成证书需要的参数，如：
      *
+     * @param param 生成证书需要的参数，如：
+     * @return {@link ResponseResult}
+     * @throws Exception 例外
      */
     @PostMapping("/generate")
     public ResponseResult generate(@RequestBody LicenseCreatorParam param) throws Exception {
         // 如果没有人为的指定lic要生成的位置，则程序自动处理
-        if(CommonUtils.isEmpty(param.getLicensePath())){
+        if (CommonUtils.isEmpty(param.getLicensePath())) {
             //设置格式
-            SimpleDateFormat format =  new SimpleDateFormat("yyyyMMddHHmmss");
+            SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
             String tempPath = properties.getTempPath();
-            if(tempPath == null || "".equals(tempPath)){
+            if (tempPath == null || "".equals(tempPath)) {
                 // 如果默认临时文件等于空的话，就获取当前服务执行的路径
                 tempPath = AServerInfos.getServerTempPath();
             }
             // 根据时间戳，命名lic文件
-            String licDir = tempPath+"/license/"+format.format(System.currentTimeMillis());
+            String licDir = tempPath + "/license/" + format.format(System.currentTimeMillis());
             File file = new File(licDir);
-            if(!file.exists()){
-               if(!file.mkdirs()){
-                   throw new CommonException("创建目录"+licDir+",失败，请检查是是否有创建目录的权限或者手动进行创建！");
-               }
+            if (!file.exists()) {
+                if (!file.mkdirs()) {
+                    throw new CommonException("创建目录" + licDir + ",失败，请检查是是否有创建目录的权限或者手动进行创建！");
+                }
             }
             /**统一下路径分隔符*/
-            param.setLicensePath(licDir.replace("\\","/") + "/license.lic");
+            param.setLicensePath(licDir.replace("\\", "/") + "/license.lic");
         }
-        param.setLicUrl(licPrefixUrl+"download?path="+param.getLicensePath());
+        param.setLicUrl(licPrefixUrl + "download?path=" + param.getLicensePath());
         return creatorService.generateLicense(param);
     }
 
+    /**
+     * 下载
+     *
+     * @param path     路径
+     * @param request  请求
+     * @param response 响应
+     * @throws Exception 例外
+     */
     @GetMapping("/download")
-    public void downLoad(@RequestParam(value = "path") String path, HttpServletRequest request, HttpServletResponse response) throws Exception{
+    public void downLoad(@RequestParam(value = "path") String path, HttpServletRequest request, HttpServletResponse response) throws Exception {
         File file = new File(path);
-        if(!file.exists()){
+        if (!file.exists()) {
             response.setStatus(HttpStatus.NOT_FOUND.value());
             return;
         }
@@ -93,7 +104,7 @@ public class LicenseCreatorController {
         BufferedInputStream bis = new BufferedInputStream(is);
         OutputStream os = response.getOutputStream();
         byte[] buffer = new byte[1024 * 10];
-        int length ;
+        int length;
         while ((length = bis.read(buffer, 0, buffer.length)) != -1) {
             os.write(buffer, 0, length);
         }
@@ -102,6 +113,13 @@ public class LicenseCreatorController {
         is.close();
     }
 
+    /**
+     * 设置附件编码
+     *
+     * @param request  请求
+     * @param response 响应
+     * @param fileName 文件名
+     */
     private void setAttachmentCoding(HttpServletRequest request, HttpServletResponse response, String fileName) {
         String browser;
         try {

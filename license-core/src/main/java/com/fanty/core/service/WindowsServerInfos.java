@@ -10,16 +10,22 @@ import java.io.InputStreamReader;
 /**
  * <p>用于获取客户Windows服务器的基本信息</p>
  *
- * @author fanty
- * @version v1.0.0
- * @blob https://blog.csdn.net/fanty
- * @date created on  10:42 下午 2020/8/21
+ * @author zhaosh
+ * @date 2024/02/01
  */
 public class WindowsServerInfos extends AServerInfos {
 
+    /** cpu 命令 */
     private final String CPU_COMMAND = "wmic cpu get processorid";
+    /** 主板命令 */
     private final String MAIN_BOARD_COMMAND = "wmic baseboard get serialnumber";
 
+    /**
+     * 获取 CPUSellial
+     *
+     * @return {@link String}
+     * @throws Exception 例外
+     */
     @Override
     protected String getCPUSerial() throws Exception {
         String result = "";
@@ -49,6 +55,12 @@ public class WindowsServerInfos extends AServerInfos {
 //      return GxServerSerialHelper.getWindowsSerial(CPU_COMMAND);
     }
 
+    /**
+     * 获取主板串口
+     *
+     * @return {@link String}
+     * @throws Exception 例外
+     */
     @Override
     protected String getMainBoardSerial() throws Exception {
 
@@ -78,6 +90,4 @@ public class WindowsServerInfos extends AServerInfos {
         return result.trim();
 //      return GxServerSerialHelper.getWindowsSerial(MAIN_BOARD_COMMAND);
     }
-
-
 }

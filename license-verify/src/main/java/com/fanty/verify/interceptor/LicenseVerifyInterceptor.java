@@ -1,6 +1,7 @@
 package com.fanty.verify.interceptor;
 
 import com.fanty.core.ex.CommonException;
+import com.fanty.core.listener.ACustomVerifyListener;
 import com.fanty.core.model.LicenseExtraParam;
 import com.fanty.core.model.LicenseResult;
 import com.fanty.core.model.LicenseVerifyManager;
@@ -8,7 +9,6 @@ import com.fanty.core.result.ResultCode;
 import com.fanty.core.utils.CommonUtils;
 import com.fanty.verify.annotion.VLicense;
 import com.fanty.verify.config.LicenseVerifyProperties;
-import com.fanty.core.listener.ACustomVerifyListener;
 import de.schlichtherle.license.LicenseContent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.method.HandlerMethod;
@@ -20,7 +20,7 @@ import java.lang.reflect.Method;
 import java.util.List;
 
 /**
- * <p>License验证拦截器</p>
+ * 许可证验证拦截器
  *
  * @author fanty
  * @version v1.0.0
@@ -29,12 +29,25 @@ import java.util.List;
  */
 public class LicenseVerifyInterceptor implements HandlerInterceptor {
 
+    /** 验证属性 */
     @Autowired
     private LicenseVerifyProperties properties;
 
+    /**
+     * 许可证验证拦截器
+     */
     public LicenseVerifyInterceptor() {
     }
 
+    /**
+     * 预处理
+     *
+     * @param request  请求
+     * @param response 响应
+     * @param handler  处理器
+     * @return boolean
+     * @throws Exception 例外
+     */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         if (handler instanceof HandlerMethod) {
@@ -45,7 +58,7 @@ public class LicenseVerifyInterceptor implements HandlerInterceptor {
                 LicenseVerifyManager licenseVerifyManager = new LicenseVerifyManager();
                 /** 1、校验证书是否有效 */
                 LicenseResult verifyResult = licenseVerifyManager.verify(properties.getVerifyParam());
-                if(!verifyResult.getResult()){
+                if (!verifyResult.getResult()) {
                     throw new CommonException(verifyResult.getMessage());
                 }
                 LicenseContent content = verifyResult.getContent();
@@ -60,7 +73,7 @@ public class LicenseVerifyInterceptor implements HandlerInterceptor {
                     }
                     return compare;
                 }
-                throw new CommonException(ResultCode.INTERNAL,verifyResult.getException().getMessage());
+                throw new CommonException(ResultCode.INTERNAL, verifyResult.getException().getMessage());
             }
         }
         return true;

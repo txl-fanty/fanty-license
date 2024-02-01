@@ -6,6 +6,12 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
+/**
+ * 许可证验证应用程序
+ *
+ * @author zhaosh
+ * @date 2024/02/01
+ */
 @SpringBootApplication
 /**
  * 开启定时器，{@link com.fanty.verify.listener.LicenseVerifyInstallListener}

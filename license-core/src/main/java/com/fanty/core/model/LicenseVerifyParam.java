@@ -1,34 +1,45 @@
 package com.fanty.core.model;
 
 /**
+ * 许可证验证参数
  * <p>License校验类需要的参数</p>
  *
- * @author fanty
- * @version v1.0.0
- * @blob https://blog.csdn.net/fanty
- * @date created on  10:42 下午 2020/8/21
+ * @author zhaosh
+ * @date 2024/02/01
  */
 public class LicenseVerifyParam {
 
-    /**证书主题*/
+    /** 证书主题 */
     private String subject;
 
-    /**公钥别名*/
+    /** 公钥别名 */
     private String publicAlias;
 
-    /** 访问公钥库的密码*/
+    /** 访问公钥库的密码 */
     private String storePass;
 
-    /**证书生成路径*/
+    /** 证书生成路径 */
     private String licensePath;
 
-    /**公钥库存储路径*/
+    /** 公钥库存储路径 */
     private String publicKeysStorePath;
 
+    /**
+     * 许可证验证参数
+     */
     public LicenseVerifyParam() {
 
     }
 
+    /**
+     * 许可证验证参数
+     *
+     * @param subject             主题
+     * @param publicAlias         公共别名
+     * @param storePass           商店通行证
+     * @param licensePath         许可证路径
+     * @param publicKeysStorePath 公钥存储路径
+     */
     public LicenseVerifyParam(String subject, String publicAlias, String storePass, String licensePath, String publicKeysStorePath) {
         this.subject = subject;
         this.publicAlias = publicAlias;

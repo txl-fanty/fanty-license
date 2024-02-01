@@ -9,16 +9,22 @@ import java.io.InputStreamReader;
 /**
  * <p>用于获取客户Linux服务器的基本信息</p>
  *
- * @author fanty
- * @version v1.0.0
- * @blob https://blog.csdn.net/fanty
- * @date created on  10:42 下午 2020/8/21
+ * @author zhaosh
+ * @date 2024/02/01
  */
 public class LinuxServerInfos extends AServerInfos {
 
-    private final String[] CPU_SHELL = {"/bin/bash","-c","dmidecode -t processor | grep 'ID' | awk -F ':' '{print $2}' | head -n 1"};
-    private final String[] MAIN_BOARD_SHELL = {"/bin/bash","-c","dmidecode | grep 'Serial Number' | awk -F ':' '{print $2}' | head -n 1"};
+    /** CPU外壳 */
+    private final String[] CPU_SHELL = {"/bin/bash", "-c", "dmidecode -t processor | grep 'ID' | awk -F ':' '{print $2}' | head -n 1"};
+    /** 主板外壳 */
+    private final String[] MAIN_BOARD_SHELL = {"/bin/bash", "-c", "dmidecode | grep 'Serial Number' | awk -F ':' '{print $2}' | head -n 1"};
 
+    /**
+     * 获取 CPUSellial
+     *
+     * @return {@link String}
+     * @throws Exception 例外
+     */
     @Override
     protected String getCPUSerial() throws Exception {
         String result = "";
@@ -26,7 +32,7 @@ public class LinuxServerInfos extends AServerInfos {
         BufferedReader bufferedReader = null;
         Process p = null;
         try {
-            p = Runtime.getRuntime().exec(new String[] { "sh", "-c", CPU_ID_CMD });// 管道
+            p = Runtime.getRuntime().exec(new String[]{"sh", "-c", CPU_ID_CMD});// 管道
             bufferedReader = new BufferedReader(new InputStreamReader(p.getInputStream()));
             String line = null;
             int index = -1;
@@ -46,13 +52,19 @@ public class LinuxServerInfos extends AServerInfos {
 //      return GxServerSerialHelper.getLinuxSerial(CPU_SHELL);
     }
 
+    /**
+     * 获取主板串口
+     *
+     * @return {@link String}
+     * @throws Exception 例外
+     */
     @Override
     protected String getMainBoardSerial() throws Exception {
         String result = "";
         String maniBord_cmd = "dmidecode | grep 'Serial Number' | awk '{print $3}' | tail -1";
         Process p;
         try {
-            p = Runtime.getRuntime().exec(new String[] { "sh", "-c", maniBord_cmd });// 管道
+            p = Runtime.getRuntime().exec(new String[]{"sh", "-c", maniBord_cmd});// 管道
             BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()));
             String line;
             while ((line = br.readLine()) != null) {
@@ -63,10 +75,7 @@ public class LinuxServerInfos extends AServerInfos {
         } catch (IOException e) {
             LoggerHelper.error("获取主板信息错误", e);
         }
-        return  result;
+        return result;
 //      return GxServerSerialHelper.getLinuxSerial(MAIN_BOARD_SHELL);
     }
-
-
 }
-

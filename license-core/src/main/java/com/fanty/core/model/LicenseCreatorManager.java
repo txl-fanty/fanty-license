@@ -16,24 +16,29 @@ import java.text.MessageFormat;
 /**
  * <p>系统软件证书生成管理器</p>
  *
- * @author fanty
- * @version v1.0.0
- * @blob https://blog.csdn.net/fanty
- * @date created on  10:42 下午 2020/8/21
+ * @author zhaosh
+ * @date 2024/02/01
  */
 public class LicenseCreatorManager {
 
+    /** 参数 */
     private LicenseCreatorParam param;
 
+    /**
+     * 许可证创建者管理器
+     *
+     * @param param 参数
+     */
     public LicenseCreatorManager(LicenseCreatorParam param) {
         this.param = param;
     }
 
     /**
      * <p>生成License证书</p>
+     *
      * @return GxLicenseResult 证书生成结果
      */
-    public LicenseResult generateLicense(){
+    public LicenseResult generateLicense() {
         try {
             // 1、根据外部传入的创建Lic的参数信息初始化lic参数（秘钥部分）
             LicenseParam licenseParam = ParamInitHelper.initLicenseParam(param);
@@ -45,17 +50,18 @@ public class LicenseCreatorManager {
             File licenseFile = new File(this.param.getLicensePath());
             // 5、通过Lic管理器，将内容写入Lic文件中
             licenseManager.store(licenseContent, licenseFile);
-            return new LicenseResult("证书生成成功！",licenseContent);
-        }catch (Exception e){
+            return new LicenseResult("证书生成成功！", licenseContent);
+        } catch (Exception e) {
             LoggerHelper.error(e.getMessage());
             String message = MessageFormat.format("证书生成失败！：{0}", param);
-            LoggerHelper.error(message,e);
-            return new LicenseResult(message,e);
+            LoggerHelper.error(message, e);
+            return new LicenseResult(message, e);
         }
     }
 
     /**
      * <p>下载License证书</p>
+     *
      * @return InputStream 证书文件输入流
      * @throws Exception 证书下载失败
      */
@@ -65,14 +71,13 @@ public class LicenseCreatorManager {
             LicenseContent licenseContent = ParamInitHelper.initLicenseContent(param);
             LicenseManager licenseManager = new LicenseCustomManager(licenseParam);
             File licenseFile = new File(param.getLicensePath());
-            licenseManager.store(licenseContent,licenseFile);
+            licenseManager.store(licenseContent, licenseFile);
             return new FileInputStream(licenseFile);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             LoggerHelper.error(e.getMessage());
-            LoggerHelper.error(MessageFormat.format("证书下载失败：{0}",param),e);
-            throw new CommonException(ResultCode.INTERNAL,e.getMessage());
+            LoggerHelper.error(MessageFormat.format("证书下载失败：{0}", param), e);
+            throw new CommonException(ResultCode.INTERNAL, e.getMessage());
         }
     }
-
 }

@@ -5,28 +5,53 @@ import java.util.*;
 /**
  * <p>常用判断和集合转换工具类</p>
  *
- * @author fanty
- * @version v1.0.0
- * @blob https://blog.csdn.net/fanty
- * @date created on  10:42 下午 2020/8/21
+ * @author zhaosh
+ * @date 2024/02/01
  */
 public class CommonUtils {
 
+    /**
+     * 常用实用程序
+     */
     public CommonUtils() {
     }
 
+    /**
+     * 有效字符串值
+     *
+     * @param object 对象
+     * @return {@link String}
+     */
     public static String validStringValue(Object object) {
         return object == null ? "" : object.toString();
     }
 
+    /**
+     * 有效 int 值
+     *
+     * @param object 对象
+     * @return int
+     */
     public static int validIntValue(Object object) {
         return object == null ? 0 : Integer.valueOf(object.toString());
     }
 
+    /**
+     * 有效长整型值
+     *
+     * @param object 对象
+     * @return long
+     */
     public static long validLongValue(Object object) {
         return object == null ? 0L : Long.valueOf(object.toString());
     }
 
+    /**
+     * 不为空
+     *
+     * @param object 对象
+     * @return boolean
+     */
     public static boolean isNotEmpty(Object object) {
         if (object == null) {
             return false;
@@ -35,19 +60,19 @@ public class CommonUtils {
         } else if (object instanceof Long) {
             return Long.valueOf(object.toString()) > 0L;
         } else if (object instanceof String) {
-            return ((String)object).trim().length() > 0;
+            return ((String) object).trim().length() > 0;
         } else if (object instanceof StringBuffer) {
-            return ((StringBuffer)object).toString().trim().length() > 0;
+            return ((StringBuffer) object).toString().trim().length() > 0;
         } else if (object instanceof Boolean) {
             return Boolean.valueOf(object.toString());
         } else if (object instanceof List) {
-            return ((List)object).size() > 0;
+            return ((List) object).size() > 0;
         } else if (object instanceof Set) {
-            return ((Set)object).size() > 0;
+            return ((Set) object).size() > 0;
         } else if (object instanceof Map) {
-            return ((Map)object).size() > 0;
+            return ((Map) object).size() > 0;
         } else if (object instanceof Iterator) {
-            return ((Iterator)object).hasNext();
+            return ((Iterator) object).hasNext();
         } else if (object.getClass().isArray()) {
             return Arrays.asList(object).size() > 0;
         } else {
@@ -55,6 +80,12 @@ public class CommonUtils {
         }
     }
 
+    /**
+     * 为空
+     *
+     * @param object 对象
+     * @return boolean
+     */
     public static boolean isEmpty(Object object) {
         if (object == null) {
             return true;
@@ -63,19 +94,19 @@ public class CommonUtils {
         } else if (object instanceof Long) {
             return Long.valueOf(object.toString()) == 0L;
         } else if (object instanceof String) {
-            return ((String)object).trim().length() == 0;
+            return ((String) object).trim().length() == 0;
         } else if (object instanceof StringBuffer) {
-            return ((StringBuffer)object).toString().trim().length() == 0;
+            return ((StringBuffer) object).toString().trim().length() == 0;
         } else if (object instanceof Boolean) {
             return Boolean.valueOf(object.toString());
         } else if (object instanceof List) {
-            return ((List)object).size() == 0;
+            return ((List) object).size() == 0;
         } else if (object instanceof Set) {
-            return ((Set)object).size() == 0;
+            return ((Set) object).size() == 0;
         } else if (object instanceof Map) {
-            return ((Map)object).size() == 0;
+            return ((Map) object).size() == 0;
         } else if (object instanceof Iterator) {
-            return !((Iterator)object).hasNext();
+            return !((Iterator) object).hasNext();
         } else if (object.getClass().isArray()) {
             return Arrays.asList(object).size() == 0;
         } else {
@@ -83,12 +114,18 @@ public class CommonUtils {
         }
     }
 
+    /**
+     * set2 列表
+     *
+     * @param sets 集
+     * @return {@link List}<{@link Long}>
+     */
     public static List<Long> set2List(Set<Long> sets) {
         List<Long> list = new ArrayList();
         if (sets != null && sets.size() > 0) {
             Iterator var2 = sets.iterator();
 
-            while(var2.hasNext()) {
+            while (var2.hasNext()) {
                 Object o = var2.next();
                 Long id = Long.valueOf(o.toString());
                 list.add(id);
@@ -100,6 +137,12 @@ public class CommonUtils {
         }
     }
 
+    /**
+     * set2 列表 str
+     *
+     * @param set 设置
+     * @return {@link List}<{@link String}>
+     */
     public static List<String> set2ListStr(Set<?> set) {
         ArrayList result = new ArrayList();
 
@@ -116,6 +159,12 @@ public class CommonUtils {
         return result;
     }
 
+    /**
+     * list2 集
+     *
+     * @param list 列表
+     * @return {@link Set}<{@link Long}>
+     */
     public static Set<Long> list2Set(List<String> list) {
         HashSet result = new HashSet();
 
@@ -132,12 +181,18 @@ public class CommonUtils {
         return result;
     }
 
+    /**
+     * hash set 设置为 set
+     *
+     * @param sets 集
+     * @return {@link Set}<{@link Long}>
+     */
     public static Set<Long> hashSetToSet(HashSet<?> sets) {
         Set<Long> result = new HashSet();
         if (sets != null && sets.size() > 0) {
             Iterator var2 = sets.iterator();
 
-            while(var2.hasNext()) {
+            while (var2.hasNext()) {
                 Object o = var2.next();
                 Long id = Long.valueOf(o.toString());
                 result.add(id);
@@ -149,6 +204,12 @@ public class CommonUtils {
         }
     }
 
+    /**
+     * 设置为列表
+     *
+     * @param set 设置
+     * @return {@link List}<{@link String}>
+     */
     public static List<String> setToList(Set<?> set) {
         ArrayList result = new ArrayList();
         try {
@@ -163,6 +224,12 @@ public class CommonUtils {
         return result;
     }
 
+    /**
+     * 列表到列表
+     *
+     * @param list 列表
+     * @return {@link List}<{@link String}>
+     */
     public static List<String> listToList(List<?> list) {
         ArrayList result = new ArrayList();
         try {
@@ -177,6 +244,12 @@ public class CommonUtils {
         return result;
     }
 
+    /**
+     * 列表转字符串
+     *
+     * @param list 列表
+     * @return {@link String}
+     */
     public static String listToString(List<String> list) {
         if (list == null) {
             return null;
@@ -189,8 +262,8 @@ public class CommonUtils {
                 }
 
                 String s;
-                for(Iterator var2 = list.iterator(); var2.hasNext(); result = result + s + ";") {
-                    s = (String)var2.next();
+                for (Iterator var2 = list.iterator(); var2.hasNext(); result = result + s + ";") {
+                    s = (String) var2.next();
                 }
 
                 result = result.substring(0, result.length() - 1);
@@ -202,6 +275,12 @@ public class CommonUtils {
         }
     }
 
+    /**
+     * 字符串列表
+     *
+     * @param str str
+     * @return {@link List}<{@link String}>
+     */
     public static List<String> StringTolist(String str) {
         if (str != null && str.length() != 0) {
             ArrayList list = new ArrayList();
@@ -211,7 +290,7 @@ public class CommonUtils {
                 String[] var3 = strs;
                 int var4 = strs.length;
 
-                for(int var5 = 0; var5 < var4; ++var5) {
+                for (int var5 = 0; var5 < var4; ++var5) {
                     String result = var3[var5];
                     list.add(result);
                 }

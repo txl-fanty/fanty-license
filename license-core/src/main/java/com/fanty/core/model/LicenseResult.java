@@ -5,10 +5,8 @@ import de.schlichtherle.license.LicenseContent;
 /**
  * <p>License证书验证结果对象</p>
  *
- * @author fanty
- * @version v1.0.0
- * @blob https://blog.csdn.net/fanty
- * @date created on  10:42 下午 2020/8/21
+ * @author zhaosh
+ * @date 2024/02/01
  */
 public class LicenseResult {
 
@@ -21,29 +19,58 @@ public class LicenseResult {
     /** 检验失败错误 */
     private Exception exception;
 
+    /**
+     * 许可证结果
+     *
+     * @param content 内容
+     */
     public LicenseResult(LicenseContent content) {
         this.result = true;
         this.content = content;
     }
 
+    /**
+     * 许可证结果
+     *
+     * @param message 消息
+     * @param content 内容
+     */
     public LicenseResult(String message, LicenseContent content) {
         this.result = true;
         this.message = message;
         this.content = content;
     }
 
+    /**
+     * 许可证结果
+     *
+     * @param exception 例外
+     */
     public LicenseResult(Exception exception) {
         this.result = false;
         this.exception = exception;
     }
 
+    /**
+     * 许可证结果
+     *
+     * @param message   消息
+     * @param exception 例外
+     */
     public LicenseResult(String message, Exception exception) {
         this.result = false;
         this.message = message;
         this.exception = exception;
     }
 
-    public LicenseResult(boolean result , String message, Exception exception) {
+    /**
+     * 许可证结果
+     *
+     * @param result    结果
+     * @param message   消息
+     * @param exception 例外
+     */
+    public LicenseResult(boolean result, String message, Exception exception) {
         this.result = result;
         this.message = message;
         this.exception = exception;

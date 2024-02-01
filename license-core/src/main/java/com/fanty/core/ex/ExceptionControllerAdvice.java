@@ -10,26 +10,43 @@ import org.springframework.web.bind.annotation.*;
 /**
  * <p>全局接口异常拦截器</p>
  *
- * @author fanty
- * @version v1.0.0
- * @blob https://blog.csdn.net/fanty
- * @date created on 00:41 下午 2020/8/31
+ * @author zhaosh
+ * @date 2024/02/01
  */
 @CrossOrigin
 @ControllerAdvice
 @RestControllerAdvice
 public class ExceptionControllerAdvice {
+    /**
+     * 异常控制器建议
+     */
     public ExceptionControllerAdvice() {
     }
 
+    /**
+     * 初始化活页夹
+     *
+     * @param binder 粘结 剂
+     */
     @InitBinder
     public void initBinder(WebDataBinder binder) {
     }
 
+    /**
+     * 添加属性
+     *
+     * @param model 型
+     */
     @ModelAttribute
     public void addAttributes(Model model) {
     }
 
+    /**
+     * 错误处理程序
+     *
+     * @param ex 前任
+     * @return {@link ResponseEntity}
+     */
     @ResponseBody
     @ExceptionHandler(value = Exception.class)
     public ResponseEntity errorHandler(Exception ex) {
@@ -41,4 +58,3 @@ public class ExceptionControllerAdvice {
                 .body(ResponseResult.fail(ex.getMessage()));
     }
 }
-

@@ -5,23 +5,29 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 /**
- * <p>License验证属性类</p>
+ * 许可证验证属性
  *
- * @author fanty
- * @version v1.0.0
- * @blob https://blog.csdn.net/fanty
- * @date created on 00:02 上午 2020/8/22
+ * @author zhaosh
+ * @date 2024/02/01
  */
 @Component
 @ConfigurationProperties(prefix = "springboot.license.verify")
 public class LicenseVerifyProperties {
 
+    /** 主题 */
     private String subject;
+    /** 公共别名 */
     private String publicAlias;
+    /** 公钥存储路径 */
     private String publicKeysStorePath = "";
+    /** 商店通行证 */
     private String storePass = "";
+    /** 许可证路径 */
     private String licensePath;
 
+    /**
+     * 许可证验证属性
+     */
     public LicenseVerifyProperties() {
     }
 

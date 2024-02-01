@@ -7,16 +7,17 @@ import org.springframework.context.annotation.Configuration;
 /**
  * <p>License验证模块自动扫包/装配Bean实例</p>
  *
- * @author fanty
- * @version v1.0.0
- * @blob https://blog.csdn.net/fanty
- * @date created on 00:02 上午 2020/8/22
+ * @author zhaosh
+ * @date 2024/02/01
  */
 @Configuration
 @ComponentScan(basePackages = {"com.fanty.verify"})
 public class LicenseVerifyAutoConfigure {
 
-    public LicenseVerifyAutoConfigure(){
+    /**
+     * 许可证验证自动配置
+     */
+    public LicenseVerifyAutoConfigure() {
         LoggerHelper.info("============ license-verify-spring-boot-starter initialization！ ===========");
     }
 }

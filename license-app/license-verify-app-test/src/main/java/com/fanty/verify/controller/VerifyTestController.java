@@ -7,22 +7,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * <p>证书认证接口测试</p>
+ * 验证测试控制器
  *
- * @author fanty
- * @version v1.0.0
- * @blob https://blog.csdn.net/fanty
- * @date created on 00:02 上午 2020/8/22
+ * @author zhaosh
+ * @date 2024/02/01
  */
 @CrossOrigin
 @RestController
 @RequestMapping("license")
 public class VerifyTestController {
 
+    /**
+     * 打招呼
+     *
+     * @return {@link String}
+     */
     @VLicense
     @GetMapping("/hello")
-    public String sayHello(){
+    public String sayHello() {
         return "hello license !";
     }
-
 }

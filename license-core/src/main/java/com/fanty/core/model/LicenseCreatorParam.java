@@ -2,64 +2,66 @@ package com.fanty.core.model;
 
 import com.fanty.core.utils.JsonUtils;
 import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 
 /**
  * <p>License创建（生成）需要的参数</p>
  *
- * @author fanty
- * @version v1.0.0
- * @blob https://blog.csdn.net/fanty
- * @date created on  10:42 下午 2020/8/21
+ * @author zhaosh
+ * @date 2024/02/01
  */
 public class LicenseCreatorParam implements Serializable {
 
+    /** 串口版 UID */
     private static final long serialVersionUID = -7793154252684580872L;
 
-    /**证书主题*/
+    /** 证书主题 */
     private String subject;
 
-    /**私钥别名*/
+    /** 私钥别名 */
     private String privateAlias;
 
-    /**私钥密码（需要妥善保管，不能让使用者知道*/
+    /** 私钥密码（需要妥善保管，不能让使用者知道 */
     private String keyPass;
 
-    /**私钥库存储路径*/
+    /** 私钥库存储路径 */
     private String privateKeysStorePath;
 
-    /**访问私钥库的密码*/
+    /** 访问私钥库的密码 */
     private String storePass;
 
-    /**证书生成路径*/
+    /** 证书生成路径 */
     private String licensePath;
 
-    /** 证书生效时间*/
+    /** 证书生效时间 */
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date issuedTime = new Date();
 
-    /** 证书失效时间*/
+    /** 证书失效时间 */
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date expiryTime;
 
-    /**用户类型*/
+    /** 用户类型 */
     private String consumerType = "user";
 
-    /**用户数量*/
+    /** 用户数量 */
     private Integer consumerAmount = 1;
 
-    /**描述信息*/
+    /** 描述信息 */
     private String description = "";
 
-    /**额外的服务器硬件校验信息（或者其他的信息都可以放）*/
+    /** 额外的服务器硬件校验信息（或者其他的信息都可以放） */
     private LicenseExtraParam licenseCheck;
 
-    /**证书下载地址 == 一旦证书create成功，这个值就会填充上*/
+    /** 证书下载地址 == 一旦证书create成功，这个值就会填充上 */
     private String licUrl;
 
-    public LicenseCreatorParam(){
-
+    /**
+     * 许可证创建者参数
+     */
+    public LicenseCreatorParam() {
     }
 
     public static long getSerialVersionUID() {

@@ -15,17 +15,25 @@ import java.util.stream.Collectors;
 /**
  * <p>服务器硬件信息抽象类 -- 模板方法，将通用的方法抽离到父类中</p>
  *
- * @author fanty
- * @version v1.0.0
- * @blob https://blog.csdn.net/fanty
- * @date created on  10:42 下午 2020/8/21
+ * @author zhaosh
+ * @date 2024/02/01
  */
 public abstract class AServerInfos {
 
+    /**
+     * GX 服务器信息容器
+     *
+     * @author zhaosh
+     * @date 2024/02/01
+     */
     private static class GxServerInfosContainer {
+        /** IP地址 */
         private static List<String> ipAddress = null;
+        /** MAC地址 */
         private static List<String> macAddress = null;
+        /** CPU串口 */
         private static String cpuSerial = null;
+        /** 主板串口 */
         private static String mainBoardSerial = null;
     }
 
@@ -122,6 +130,8 @@ public abstract class AServerInfos {
 
     /**
      * <p>获取服务器临时磁盘位置</p>
+     *
+     * @return {@link String}
      */
     public static String getServerTempPath() {
 
@@ -207,5 +217,4 @@ public abstract class AServerInfos {
         }
         return null;
     }
-
 }

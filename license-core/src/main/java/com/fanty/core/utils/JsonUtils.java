@@ -14,13 +14,12 @@ import java.util.Map;
 /**
  * <p>Json正反序列化工具类</p>
  *
- * @author fanty
- * @version v1.0.0
- * @blob https://blog.csdn.net/fanty
- * @date created on  11:04 下午 2020/8/21
+ * @author zhaosh
+ * @date 2024/02/01
  */
 public class JsonUtils {
 
+    /** 映射 */
     public static final ObjectMapper MAPPER = new ObjectMapper();
 
     static {
@@ -31,9 +30,18 @@ public class JsonUtils {
         MAPPER.configure(JsonParser.Feature.ALLOW_COMMENTS, true);
     }
 
+    /**
+     * json 实用程序
+     */
     public JsonUtils() {
     }
 
+    /**
+     * 对象转 JSON
+     *
+     * @param data 数据
+     * @return {@link String}
+     */
     public static String objectToJson(Object data) {
         try {
             return MAPPER.writeValueAsString(data);
@@ -43,6 +51,13 @@ public class JsonUtils {
         }
     }
 
+    /**
+     * 对象到 JSON 类型
+     *
+     * @param data          数据
+     * @param typeReference 类型引用
+     * @return {@link String}
+     */
     public static String objectToJsonWithType(Object data, TypeReference typeReference) {
         try {
             return MAPPER.writerFor(typeReference).writeValueAsString(data);
@@ -52,6 +67,13 @@ public class JsonUtils {
         }
     }
 
+    /**
+     * JSON 为 POJO
+     *
+     * @param jsonData JSON 数据
+     * @param beanType 豆类类型
+     * @return {@link T}
+     */
     public static <T> T jsonToPojo(String jsonData, Class<T> beanType) {
         try {
             return MAPPER.readValue(jsonData, beanType);
@@ -61,6 +83,13 @@ public class JsonUtils {
         }
     }
 
+    /**
+     * JSON 列出
+     *
+     * @param jsonData JSON 数据
+     * @param beanType 豆类类型
+     * @return {@link List}<{@link T}>
+     */
     public static <T> List<T> jsonToList(String jsonData, Class<T> beanType) {
         JavaType javaType = MAPPER.getTypeFactory().constructParametricType(List.class, new Class[]{beanType});
 
@@ -72,13 +101,26 @@ public class JsonUtils {
         }
     }
 
+    /**
+     * 解析地图
+     *
+     * @param jsonStr json str
+     * @return {@link Map}<{@link String}, {@link Object}>
+     * @throws IOException ioexception
+     */
     public static Map<String, Object> parseMap(String jsonStr) throws IOException {
         return (Map) MAPPER.readValue(jsonStr, Map.class);
     }
 
+    /**
+     * 解析列表
+     *
+     * @param jsonStr json str
+     * @return {@link List}<{@link String}>
+     * @throws IOException ioexception
+     */
     public static List<String> parseList(String jsonStr) throws IOException {
         return (List) MAPPER.readValue(jsonStr, new TypeReference<List<String>>() {
         });
     }
-
 }

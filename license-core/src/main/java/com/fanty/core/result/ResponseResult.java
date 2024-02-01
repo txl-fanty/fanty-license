@@ -10,67 +10,99 @@ import java.util.Date;
 /**
  * <p>请求结果（封装）</p>
  *
- * @author fanty
- * @version v1.0.0
- * @blob https://blog.csdn.net/fanty
- * @date created on  10:32 下午 2020/8/21
+ * @author zhaosh
+ * @date 2024/02/01
  */
 public class ResponseResult {
 
-    /** 响应结果状态码*/
+    /** 响应结果状态码 */
     private Integer status;
 
-    /** 响应结果消息*/
+    /** 响应结果消息 */
     private String message;
 
-    /** 响应结果对应的（包含）的数据，空的话不反序列话*/
+    /** 响应结果对应的（包含）的数据，空的话不反序列话 */
     @JsonInclude(value = Include.NON_NULL)
     private Object data;
 
-    /** 响应时间*/
+    /** 响应时间 */
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date timeStamp = new Date();
 
+    /**
+     * 响应结果
+     */
     public ResponseResult() {
         this.status = null;
         this.message = null;
         this.data = null;
     }
 
+    /**
+     * 响应结果
+     *
+     * @param status  地位
+     * @param message 消息
+     */
     public ResponseResult(Integer status, String message) {
         this.status = status;
         this.message = message;
         this.data = null;
     }
 
-    public ResponseResult(Integer status ,String message,Object data){
+    /**
+     * 响应结果
+     *
+     * @param status  地位
+     * @param message 消息
+     * @param data    数据
+     */
+    public ResponseResult(Integer status, String message, Object data) {
         this.status = status;
         this.message = message;
         this.data = data;
     }
 
-    public ResponseResult(ResultCode resultCode, String message){
+    /**
+     * 响应结果
+     *
+     * @param resultCode 结果代码
+     * @param message    消息
+     */
+    public ResponseResult(ResultCode resultCode, String message) {
         this.status = resultCode.getCode();
         this.message = message;
     }
 
     /**
      * 默认成功返回的实例
+     *
      * @param data 对象
      */
-    private ResponseResult(Object data){
+    private ResponseResult(Object data) {
         this.status = ResultCode.OK.getCode();
         this.message = ResultCode.OK.getName();
         this.data = data;
     }
 
-    private ResponseResult(String message,Object data){
+    /**
+     * 响应结果
+     *
+     * @param message 消息
+     * @param data    数据
+     */
+    private ResponseResult(String message, Object data) {
         this.status = ResultCode.OK.getCode();
         this.message = message;
         this.data = data;
     }
 
-    private ResponseResult(ResultCode code){
+    /**
+     * 响应结果
+     *
+     * @param code 法典
+     */
+    private ResponseResult(ResultCode code) {
         this.status = code.getCode();
         this.message = code.getName();
         this.data = null;
@@ -92,19 +124,19 @@ public class ResponseResult {
         return timeStamp;
     }
 
-    public static ResponseResult ok(Object data){
+    public static ResponseResult ok(Object data) {
         return new ResponseResult(data);
     }
 
-    public static ResponseResult ok(String message,Object data){
+    public static ResponseResult ok(String message, Object data) {
         return new ResponseResult(data);
     }
 
-    public static ResponseResult fail(ResultCode code){
+    public static ResponseResult fail(ResultCode code) {
         return new ResponseResult(code);
     }
 
-    public static ResponseResult fail(String message){
-        return new ResponseResult(HttpStatus.BAD_REQUEST.value(),"失败",message);
+    public static ResponseResult fail(String message) {
+        return new ResponseResult(HttpStatus.BAD_REQUEST.value(), "失败", message);
     }
 }

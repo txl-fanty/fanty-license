@@ -9,12 +9,11 @@ import javax.security.auth.x500.X500Principal;
 import java.util.prefs.Preferences;
 
 /**
+ * param init 帮助程序
  * <p>GxParamInitHelper</p>
  *
- * @author fanty
- * @version v1.0.0
- * @blob https://blog.csdn.net/fanty
- * @date created on  10:42 下午 2020/8/21
+ * @author zhaosh
+ * @date 2024/02/01
  */
 public class ParamInitHelper {
 
@@ -23,27 +22,29 @@ public class ParamInitHelper {
 
     /**
      * <p>初始化证书生成参数</p>
+     *
      * @param param GxLicenseCreatorParam 生成证书参数
      * @return LicenseParam 证书参数
      */
-    public static LicenseParam initLicenseParam(LicenseCreatorParam param){
+    public static LicenseParam initLicenseParam(LicenseCreatorParam param) {
         Preferences preferences = Preferences.userNodeForPackage(LicenseCreator.class);
         /** 设置对证书内容加密的秘钥 */
         CipherParam cipherParam = new DefaultCipherParam(param.getStorePass());
         KeyStoreParam privateStoreParam = new DefaultKeyStoreParam(LicenseCreator.class
-                ,param.getPrivateKeysStorePath()
-                ,param.getPrivateAlias()
-                ,param.getStorePass()
-                ,param.getKeyPass());
-        return new DefaultLicenseParam(param.getSubject(),preferences,privateStoreParam,cipherParam);
+                , param.getPrivateKeysStorePath()
+                , param.getPrivateAlias()
+                , param.getStorePass()
+                , param.getKeyPass());
+        return new DefaultLicenseParam(param.getSubject(), preferences, privateStoreParam, cipherParam);
     }
 
     /**
      * <p>初始化证书内容信息对象</p>
+     *
      * @param param GxLicenseCreatorParam 生成证书参数
      * @return LicenseContent 证书内容
      */
-    public static LicenseContent initLicenseContent(LicenseCreatorParam param){
+    public static LicenseContent initLicenseContent(LicenseCreatorParam param) {
         LicenseContent licenseContent = new LicenseContent();
         licenseContent.setHolder(DEFAULT_HOLDER_AND_ISSUER);
         licenseContent.setIssuer(DEFAULT_HOLDER_AND_ISSUER);
@@ -68,19 +69,20 @@ public class ParamInitHelper {
 
     /**
      * <p>初始化证书生成参数</p>
+     *
      * @param param License校验类需要的参数
      */
-    public static LicenseParam initLicenseParam(LicenseVerifyParam param){
+    public static LicenseParam initLicenseParam(LicenseVerifyParam param) {
         Preferences preferences = Preferences.userNodeForPackage(LicenseVerifyManager.class);
         CipherParam cipherParam = new DefaultCipherParam(param.getStorePass());
         KeyStoreParam publicStoreParam = new DefaultKeyStoreParam(LicenseVerifyManager.class
                 /** 公钥库存储路径 */
-                ,param.getPublicKeysStorePath()
+                , param.getPublicKeysStorePath()
                 /** 公匙别名 */
-                ,param.getPublicAlias()
+                , param.getPublicAlias()
                 /** 公钥库访问密码 */
-                ,param.getStorePass()
-                ,null);
-        return new DefaultLicenseParam(param.getSubject(),preferences,publicStoreParam,cipherParam);
+                , param.getStorePass()
+                , null);
+        return new DefaultLicenseParam(param.getSubject(), preferences, publicStoreParam, cipherParam);
     }
 }

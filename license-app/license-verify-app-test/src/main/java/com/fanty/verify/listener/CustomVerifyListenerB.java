@@ -6,15 +6,20 @@ import com.fanty.core.model.LicenseExtraParam;
 import org.springframework.stereotype.Component;
 
 /**
- * <p>Lic自定义验证监听器B</p>
+ * 自定义验证侦听器
  *
- * @author fanty
- * @version v1.0.0
- * @blob https://blog.csdn.net/fanty
- * @date created on 10:24 下午 2020/8/21
+ * @author zhaosh
+ * @date 2024/02/01
  */
 @Component
 public class CustomVerifyListenerB extends ACustomVerifyListener {
+    /**
+     * 验证
+     *
+     * @param licenseExtra 额外许可
+     * @return boolean
+     * @throws CommonException <p>自定义通用异常类</p>
+     */
     @Override
     public boolean verify(LicenseExtraParam licenseExtra) throws CommonException {
         System.out.println("======= 自定义证书验证监听器B 实现verify方法  =======");

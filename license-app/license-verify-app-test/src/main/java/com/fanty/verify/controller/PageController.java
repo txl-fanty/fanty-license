@@ -5,22 +5,23 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 /**
- * <p>WebPage映射</p>
+ * 页面控制器
  *
- * @author fanty
- * @version v1.0.0
- * @blob https://blog.csdn.net/fanty
- * @date created on 00:02 上午 2020/8/22
+ * @author zhaosh
+ * @date 2024/02/01
  */
 @Controller
 public class PageController {
 
     /**
+     * 获取登录名
      * 测试地址：http://localhost:8081/login
+     *
+     * @param page 页
+     * @return {@link String}
      */
     @GetMapping("/{page}")
-    public String getLogin(@PathVariable(name = "page") String page){
-        return page+".html";
+    public String getLogin(@PathVariable(name = "page") String page) {
+        return page + ".html";
     }
-
 }

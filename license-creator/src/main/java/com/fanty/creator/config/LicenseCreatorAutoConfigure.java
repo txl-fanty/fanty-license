@@ -8,16 +8,17 @@ import org.springframework.context.annotation.Configuration;
 /**
  * <p>License生成模块自动扫包/装配Bean实例</p>
  *
- * @author fanty
- * @version v1.0.0
- * @blob https://blog.csdn.net/fanty
- * @date created on 11:33 下午 2020/8/21
+ * @author zhaosh
+ * @date 2024/02/01
  */
 @Configuration
 @ComponentScan(basePackages = {"com.fanty.creator"})
 @EnableConfigurationProperties({LicenseCreatorProperties.class})
 public class LicenseCreatorAutoConfigure {
-    public LicenseCreatorAutoConfigure(){
+    /**
+     * 许可证创建者自动配置
+     */
+    public LicenseCreatorAutoConfigure() {
         LoggerHelper.info("============ license-creator-spring-boot-starter initialization！ ===========");
     }
 }

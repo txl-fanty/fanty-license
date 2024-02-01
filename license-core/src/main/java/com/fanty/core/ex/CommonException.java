@@ -13,60 +13,107 @@ import org.springframework.http.HttpStatus;
  * @blob https://blog.csdn.net/fanty
  * @date created on 上午 10:59 2019-4-27
  */
-public class CommonException extends Exception{
+public class CommonException extends Exception {
 
-    /** 结果状态码*/
+    /** 结果状态码 */
     private ResultCode resultCode;
 
-    /** 结果消息*/
+    /** 结果消息 */
     private String message;
 
-    public CommonException(String message){
+    /**
+     * 常见异常
+     *
+     * @param message 消息
+     */
+    public CommonException(String message) {
         super(message);
         this.resultCode = ResultCode.INTERNAL;
         this.message = message;
     }
 
-    public CommonException(ResultCode resultCode, String message){
+    /**
+     * 常见异常
+     *
+     * @param resultCode 结果代码
+     * @param message    消息
+     */
+    public CommonException(ResultCode resultCode, String message) {
         super(message);
         this.resultCode = resultCode;
         this.message = message;
     }
 
-    public class ResultError{
+    /**
+     * 结果错误
+     *
+     * @author zhaosh
+     * @date 2024/02/01
+     */
+    public class ResultError {
 
-        /** 错误码*/
+        /** 错误码 */
         private Integer code;
 
-        /** 错误名称*/
+        /** 错误名称 */
         private String name;
 
-        public ResultError(Integer code , String name){
+        /**
+         * 结果错误
+         *
+         * @param code 法典
+         * @param name 名字
+         */
+        public ResultError(Integer code, String name) {
             this.code = code;
             this.name = name;
         }
 
+        /**
+         * 获取代码
+         *
+         * @return {@link Integer}
+         */
         public Integer getCode() {
             return code;
         }
 
+        /**
+         * 设置代码
+         *
+         * @param code 法典
+         */
         public void setCode(Integer code) {
             this.code = code;
         }
 
+        /**
+         * 获取名称
+         *
+         * @return {@link String}
+         */
         public String getName() {
             return name;
         }
 
+        /**
+         * 设置名称
+         *
+         * @param name 名字
+         */
         public void setName(String name) {
             this.name = name;
         }
     }
 
-    public ResponseResult buildResult(){
+    /**
+     * 构建结果
+     *
+     * @return {@link ResponseResult}
+     */
+    public ResponseResult buildResult() {
         Integer code = this.resultCode.getCode();
         String name = this.resultCode.getName();
-        return new ResponseResult(HttpStatus.BAD_REQUEST.value(),this.message , new ResultError(code, name));
+        return new ResponseResult(HttpStatus.BAD_REQUEST.value(), this.message, new ResultError(code, name));
     }
-
 }
