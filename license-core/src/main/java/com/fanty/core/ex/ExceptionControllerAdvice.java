@@ -44,7 +44,7 @@ public class ExceptionControllerAdvice {
     /**
      * 错误处理程序
      *
-     * @param ex 前任
+     * @param ex 异常
      * @return {@link ResponseEntity}
      */
     @ResponseBody

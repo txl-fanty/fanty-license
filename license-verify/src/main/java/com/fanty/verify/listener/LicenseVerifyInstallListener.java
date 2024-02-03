@@ -46,15 +46,16 @@ public class LicenseVerifyInstallListener implements ApplicationListener<Context
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
         if (CommonUtils.isNotEmpty(properties.getLicensePath())) {
-            install();
             try {
+                install();
+
                 String readMd5 = getMd5(properties.getLicensePath());
                 isLoad = true;
                 if (LicenseVerifyInstallListener.md5 == null || "".equals(LicenseVerifyInstallListener.md5)) {
                     LicenseVerifyInstallListener.md5 = readMd5;
                 }
             } catch (Exception e) {
-
+                e.printStackTrace();
             }
         }
     }
